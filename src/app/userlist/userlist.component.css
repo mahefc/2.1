@@ -1,0 +1,10 @@
+.app-action {
+    display: inline-block;
+    position: fixed;
+    bottom: 35px;
+    right: 10px;
+}
+
+mat-form-field{
+    width:100%;
+}

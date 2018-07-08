@@ -1,0 +1,37 @@
+.flexbox{
+  display: flex;
+  flex-wrap:wrap-reverse;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.box{
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+.box1{
+    width:200px;
+    flex-grow: 1;
+    background: #bebebe;
+    text-align: center;
+}
+.box2{
+    width:300px;
+    flex-grow: 7;
+    background: white;
+}
+.dot {
+    margin-top: 120px;
+    height:100px;
+    width: 100px;
+    background-color: #c8c8c8;
+    border-radius: 50%;
+    display: inline-block;
+}
+.high{
+    margin-top: 32px;
+}
+.header{
+    background: #666666;
+}

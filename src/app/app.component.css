@@ -1,0 +1,44 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+.fxcontainer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .mobile .toolbar {
+    position: fixed;
+    z-index: 2;
+  }
+  
+  h1.name {
+    margin-left: 5px;
+  }
+  
+  .sidenav-container {
+    flex: 1;
+  }
+
+  .mat-drawer{
+    background-color:#2b2b2b;
+   
+   }
+   .mat-nav-list .mat-list-item{
+    color:white;
+   }
+
+
+   .toolbar{
+     background: #212121;
+     color: floralwhite;
+   }
+
+   .icon{
+    background: #2b2b2b;
+   }

@@ -1,0 +1,38 @@
+<div class="box">
+  
+    <mat-card class="card mat-elevation-z1">
+
+      <mat-card-title><b>Register Form</b></mat-card-title>
+
+      <div class="fieldspace">
+        <form [formGroup]="registerForm">
+            <span class="space"></span>
+            <mat-form-field floatLabel="never">
+                <mat-select formControlName="role" placeholder="Select role">
+                  <mat-option *ngFor="let role of roles" [value]="role">
+                    {{ role }}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field floatLabel="never">
+              <input matInput placeholder="username" formControlName="username">
+              <mat-icon  matSuffix>account_box</mat-icon>
+              <mat-error *ngIf="username.errors?.required">Username must be required</mat-error>
+              <mat-error *ngIf="username.errors?.minlength">minimum 3 characters required</mat-error>      
+            </mat-form-field>
+            <mat-form-field floatLabel="never">
+                <input matInput placeholder="password" formControlName="password" [type]="hide ? 'text' : 'password'" />
+                <mat-icon  matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-error *ngIf="username.errors?.required">password must be required</mat-error>
+            </mat-form-field>
+            <span class="space"></span>
+        </form>
+      </div>
+      
+      <button mat-raised-button (click)="register()" [disabled]="!registerForm.valid"><mat-icon>chevron_right</mat-icon></button> 
+      
+    </mat-card>
+
+    <button class="btn" mat-button routerLink="/login" >Login</button>
+
+</div>  

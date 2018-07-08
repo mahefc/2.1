@@ -1,0 +1,33 @@
+<div [ngSwitch]="user.role">
+
+<div *ngSwitchCase="'Patient'">
+{{user.username}},Hello patient
+</div>
+
+<div *ngSwitchCase="'Doctor'">
+{{user.username}},Hello doctor 
+</div>
+
+
+<div *ngSwitchCase="'Admin'">
+{{user.username}},Hello Admin
+</div>
+    
+<div *ngSwitchCase="'Hospital'">
+ {{user.username}},Hello Hospital Admin 
+</div>
+
+<div *ngSwitchCase="'Lab'">
+ {{user.username}},Hello Hospital Admin 
+</div>
+
+<div *ngSwitchCase="'Pharm'">
+ {{user.username}},Hello Hospital Pharm 
+</div>
+
+<div *ngSwitchCase="'Pharmacist'">
+ {{user.username}},Hello Hospital Pharm 
+</div>
+
+</div>    
+

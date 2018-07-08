@@ -1,0 +1,32 @@
+<div class="fxcontainer" fxLayout="row wrap"[class.mobile]="mobileQuery.matches">
+    <mat-toolbar class="toolbar" *ngIf="auth.loggedIn">
+        <button mat-icon-button (click)="snav.toggle() && clicked=!clicked" >
+            <mat-icon>{{!clicked ? 'menu' : 'close'}}</mat-icon>
+        </button>
+      <h1 class="name" routerLink="/home">DOCAPP</h1>
+      <span class="spacer"></span>
+      <button id="menu" class="icon" mat-icon-button [matMenuTriggerFor]="menu">{{auth.currentUser.username | uppercase |slice:0:1 }}</button>
+        <mat-menu #menu="matMenu" yPosition="above">
+            <button mat-menu-item><mat-icon>account_circle</mat-icon>{{auth.currentUser.username}}</button>
+            <button mat-menu-item (click)="onLogoutClick()" ><mat-icon>exit_to_app</mat-icon>Logut</button>
+        </mat-menu>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+
+          <mat-nav-list *ngIf="auth.loggedIn">
+            <a mat-list-item  routerLink="/dashboard">Dashboard</a>
+            <a mat-list-item  routerLink="/account">My Account</a>
+            <a mat-list-item  routerLink="/hospital-list" *ngIf="auth.isHospitalAdmin">Staffs</a>
+            <a mat-list-item  routerLink="/user-list" *ngIf="auth.isAdmin">Users</a>
+          </mat-nav-list>
+
+        </mat-sidenav>
+        <mat-sidenav-content>
+          <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    
+</div>
+ 

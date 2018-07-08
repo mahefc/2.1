@@ -1,0 +1,19 @@
+
+<div class="flexbox">
+
+        <div class="box box2">
+                <mat-toolbar class="header">User Info</mat-toolbar>
+    
+        </div>
+    <div class="box box1">
+       <div class="center">
+            <span class="dot">
+            <h1 class="high">{{ user.username | uppercase | slice:0:1 }}</h1>
+            </span>
+           <h1>{{user.username|uppercase}}</h1>
+           <h4><mat-icon>phone</mat-icon> {{user.phone}} </h4>
+       </div>
+    </div>
+
+
+</div>

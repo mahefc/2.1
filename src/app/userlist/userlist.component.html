@@ -1,0 +1,60 @@
+<span class="app-action">
+  <button mat-fab color="primary" (click)="addData=!addData">
+      <mat-icon>{{!addData ? 'add' : 'close'}}</mat-icon>
+  </button>
+</span>
+
+<div *ngIf="!addData">
+    <mat-table #table [dataSource]="dataSource" matSort matSortDirection="asc">
+        <ng-container matColumnDef="username">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="role">
+          <mat-header-cell *matHeaderCellDef  mat-sort-header> Role </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.role}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef ></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+            <mat-menu #menu="matMenu">
+              <button mat-icon-button (click)="enableEditing(element)"><mat-icon>edit</mat-icon></button>
+              <button mat-icon-button (click)="delete(element._id)"><mat-icon>delete</mat-icon></button>
+            </mat-menu> 
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [length]="dataSource.resultsLength" [pageSize]="5" [pageSizeOptions]="[1, 2, 3, 5]"></mat-paginator>
+</div>
+
+
+<div *ngIf="addData">
+
+    <h1>ADD USER</h1>
+    <span class="space"></span>
+    <form [formGroup]="addForm" (ngSubmit)="add()">
+        <mat-form-field floatLabel="never">
+            <mat-select formControlName="role" placeholder="Select role">
+              <mat-option *ngFor="let role of roles" [value]="role">
+                {{ role }}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field floatLabel="never">
+            <input matInput placeholder="username" formControlName="username">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput type="number" placeholder="phone" formControlName="phone">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput type="password" placeholder="password" formControlName="password">
+          </mat-form-field>
+        <button mat-button color="primary" type="submit" [disabled]="!addForm.valid">
+          <mat-icon>add</mat-icon>ADD
+        </button>
+    </form>
+
+</div>
